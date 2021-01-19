@@ -14,7 +14,7 @@ function(append value)
 endfunction()
 
 if(MSVC)
-  append("/std:c++17 /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING" CMAKE_CXX_FLAGS)
+  append("/std:c++20 /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING" CMAKE_CXX_FLAGS)
 
   string(REGEX REPLACE "(^| ) */EH[-cs]+ *( |$)" "\\1 \\2" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
   append("/EHs-c- /D_HAS_EXCEPTIONS=0" CMAKE_CXX_FLAGS)
@@ -54,7 +54,7 @@ else()
   # Because of explicit compiler version check above
   # CMAKE_CXX_STANDARD doesn't bring benefits,
   # however requires update of minimum CMake version to 3.8
-  append("--std=c++17" CMAKE_CXX_FLAGS)
+  append("--std=c++20" CMAKE_CXX_FLAGS)
 
   append("-fno-exceptions -fno-rtti -fPIC -fvisibility-inlines-hidden" CMAKE_CXX_FLAGS)
 
